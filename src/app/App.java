@@ -1,7 +1,7 @@
 package app;
 
-// import modules.parkinglot.*;
-// import modules.parkingspot.*;
+import modules.parkinglot.*;
+import modules.parkingspot.*;
 // import modules.size.Size;
 
 public class App {
@@ -33,15 +33,15 @@ public class App {
         // System.out.println(spot.SpotNumber);
         // System.out.println(spot.SpotType);
 
-        // ParkingLot p = ParkingLot.getInstance();
+        ParkingLot p = ParkingLot.getInstance();
         // System.out.println(p);
         // ParkingLot p1 = ParkingLot.getInstance();
         // System.out.println(p1);
 
         // System.out.println("p");
-        // for (ParkingSpot s : p.LotStructure) {
-        //     System.out.println(s.SpotID);
-        // }
+        for (ParkingSpot s : p.LotStructure) {
+            System.out.println(s.SpotID);
+        }
 
         // System.out.println("p1");
         // for (ParkingSpot s : p1.LotStructure) {
