@@ -3,6 +3,6 @@ package modules.vehicle;
 import modules.size.*;
 
 public interface IVehicle {
-    Size getSize();
+    Size[] getSize();
     int getSpotsNeeded();
 }

@@ -6,7 +6,8 @@ import modules.size.*;
 public class ParkingManager implements IParkingManager {
 
     public ParkingManager(IParkingLot i) {
-
+        // store reference to IParkingLot,
+        // to read/update parking lot structure
     }
 
     public int park(Size size) {
