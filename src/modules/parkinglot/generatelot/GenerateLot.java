@@ -24,7 +24,7 @@ public class GenerateLot {
                     spot.Level = level;
                     spot.RowNumber = row;
                     spot.SpotNumber = spotNumber;
-                    spot.SpotType = size;//Size.SMALL;
+                    spot.SpotType = size;
 
                     LotStructure.add(spot);
 

@@ -1,12 +1,12 @@
 package app;
 
-import modules.parkinglot.*;
-import modules.parkingspot.*;
+// import modules.parkinglot.*;
+// import modules.parkingspot.*;
 // import modules.size.Size;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello Java");
+        // System.out.println("Hello Java");
 
         // for (Size cName : Size.values()) {
 		// 	System.out.println(
@@ -33,15 +33,27 @@ public class App {
         // System.out.println(spot.SpotNumber);
         // System.out.println(spot.SpotType);
 
-        ParkingLot p = ParkingLot.getInstance();
+        // ParkingLot p = ParkingLot.getInstance();
         // System.out.println(p);
         // ParkingLot p1 = ParkingLot.getInstance();
         // System.out.println(p1);
 
         // System.out.println("p");
-        for (ParkingSpot s : p.LotStructure) {
-            System.out.println(s.SpotID);
-        }
+        // for (ParkingSpot s : p.LotStructure) {
+        //     String IsAvailable = "true";
+        //     if (s.IsAvailable == false) {
+        //         IsAvailable = "false";
+        //     }
+
+        //     System.out.println(
+        //         "SpotID : " + Integer.toString(s.SpotID) +
+        //         " IsAvailable : " + IsAvailable +
+        //         " Level : " + Integer.toString(s.Level) +
+        //         " RowNumber : " + Integer.toString(s.RowNumber) +
+        //         " SpotNumber : " + Integer.toString(s.SpotNumber) +
+        //         " SpotType : " + s.SpotType.toString()
+        //     );
+        // }
 
         // System.out.println("p1");
         // for (ParkingSpot s : p1.LotStructure) {
