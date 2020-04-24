@@ -1,14 +1,15 @@
 package modules.parkinglot.generatelot;
 
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 import modules.parkingspot.*;
 import modules.size.Size;
 
 public class GenerateLot {
 
-    public static ArrayList<ParkingSpot> process() {
-        ArrayList<ParkingSpot> LotStructure = new ArrayList<ParkingSpot>();
+    public static Map<Integer, ParkingSpot> process() {
+        Map<Integer, ParkingSpot> LotStructureMap = new HashMap<Integer, ParkingSpot>();
 
         for (int level = 1; level <= 3; level++) {
 
@@ -26,14 +27,15 @@ public class GenerateLot {
                     spot.SpotNumber = spotNumber;
                     spot.SpotType = size;
 
-                    LotStructure.add(spot);
+                    LotStructureMap.put(spot.SpotID, spot);
 
                 }
             }
 
         }
+        System.out.println(LotStructureMap);
 
-        return LotStructure;
+        return LotStructureMap;
     }
 
     private static int getSpotID(int level, int row, int spotNumber) {

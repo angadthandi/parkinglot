@@ -1,11 +1,17 @@
 package app;
 
+import client.ClientBootstrap;
+
 // import modules.parkinglot.*;
 // import modules.parkingspot.*;
 // import modules.size.Size;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        ClientBootstrap.Run();
+    }
+
+    public static void test() {
         // System.out.println("Hello Java");
 
         // for (Size cName : Size.values()) {

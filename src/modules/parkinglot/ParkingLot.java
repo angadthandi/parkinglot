@@ -1,5 +1,7 @@
 package modules.parkinglot;
 
+import java.util.Map;
+import java.util.HashMap;
 import java.util.ArrayList;
 
 import modules.parkinglot.generatelot.GenerateLot;
@@ -10,14 +12,14 @@ public class ParkingLot implements IParkingLot {
 
     private static ParkingLot instance = null;
 
-    public ArrayList<ParkingSpot> LotStructure = new ArrayList<ParkingSpot>();
+    public Map<Integer, ParkingSpot> LotStructureMap = new HashMap<Integer, ParkingSpot>();
 
     private ParkingLot() {
         generateLotStructure();
     }
 
     private void generateLotStructure() {
-        LotStructure = GenerateLot.process();
+        LotStructureMap = GenerateLot.process();
     }
 
     public static ParkingLot getInstance() {
@@ -28,28 +30,38 @@ public class ParkingLot implements IParkingLot {
         return instance;
     }
 
-    public ParkingSpot[] getAllSpots() {
-        int totalSpots = 0;
+    public ArrayList<ParkingSpot> getAllSpots() {
+        ArrayList<ParkingSpot> spots = new ArrayList<ParkingSpot>();
+        int totalSpots = LotStructureMap.size();
 
-        // TODO - fetch total spots
-
-        ParkingSpot[] spots = new ParkingSpot[totalSpots];
+        for (int i=0; i<totalSpots; i++) {
+            ParkingSpot p = LotStructureMap.get(i);
+            if (p.IsAvailable) {
+                spots.add(p);
+            }
+        }
 
         return spots;
     }
 
-    public ParkingSpot[] getSpotsBySize(Size size) {
-        int totalSpots = 0;
+    public ArrayList<ParkingSpot> getSpotsBySize(Size size) {
+        ArrayList<ParkingSpot> spots = new ArrayList<ParkingSpot>();
+        int totalSpots = LotStructureMap.size();
 
-        // TODO - fetch total spots
-
-        ParkingSpot[] spots = new ParkingSpot[totalSpots];
+        for (int i=0; i<totalSpots; i++) {
+            ParkingSpot p = LotStructureMap.get(i);
+            if (p.IsAvailable && p.SpotType == size) {
+                spots.add(p);
+            }
+        }
 
         return spots;
     }
 
     public boolean updateLot(int spotID, boolean isAvailable) {
-        // TODO - update lot
+        ParkingSpot spot = LotStructureMap.get(spotID);
+        spot.IsAvailable = isAvailable;
+        LotStructureMap.put(spotID, spot);
 
         return true;
     }
