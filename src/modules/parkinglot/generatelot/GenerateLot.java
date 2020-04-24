@@ -1,6 +1,6 @@
 package modules.parkinglot.generatelot;
 
-import java.util.Map;
+// import java.util.Map;
 import java.util.HashMap;
 
 import modules.parkingspot.*;
@@ -8,8 +8,8 @@ import modules.size.Size;
 
 public class GenerateLot {
 
-    public static Map<Integer, ParkingSpot> process() {
-        Map<Integer, ParkingSpot> LotStructureMap = new HashMap<Integer, ParkingSpot>();
+    public static HashMap<Integer, ParkingSpot> process() {
+        HashMap<Integer, ParkingSpot> LotStructureMap = new HashMap<Integer, ParkingSpot>();
 
         for (int level = 1; level <= 3; level++) {
 
@@ -33,7 +33,6 @@ public class GenerateLot {
             }
 
         }
-        System.out.println(LotStructureMap);
 
         return LotStructureMap;
     }

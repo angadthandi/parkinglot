@@ -1,6 +1,6 @@
 package modules.parkinglot;
 
-import java.util.Map;
+// import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ public class ParkingLot implements IParkingLot {
 
     private static ParkingLot instance = null;
 
-    public Map<Integer, ParkingSpot> LotStructureMap = new HashMap<Integer, ParkingSpot>();
+    public HashMap<Integer, ParkingSpot> LotStructureMap = new HashMap<Integer, ParkingSpot>();
 
     private ParkingLot() {
         generateLotStructure();
@@ -36,8 +36,10 @@ public class ParkingLot implements IParkingLot {
 
         for (int i=0; i<totalSpots; i++) {
             ParkingSpot p = LotStructureMap.get(i);
-            if (p.IsAvailable) {
-                spots.add(p);
+            if (p != null) {
+                if (p.IsAvailable) {
+                    spots.add(p);
+                }
             }
         }
 
@@ -50,8 +52,10 @@ public class ParkingLot implements IParkingLot {
 
         for (int i=0; i<totalSpots; i++) {
             ParkingSpot p = LotStructureMap.get(i);
-            if (p.IsAvailable && p.SpotType == size) {
-                spots.add(p);
+            if (p != null) {
+                if (p.IsAvailable && p.SpotType == size) {
+                    spots.add(p);
+                }
             }
         }
 
