@@ -8,16 +8,25 @@ import modules.size.Size;
 
 public class GenerateLot {
 
-    public static HashMap<Integer, ParkingSpot> process() {
+    /**
+     * @param totalLevels // min 1, to generate structure
+     * @param totalRows // min 3, to generate all Sizes of Spots
+     * @param totalSpots // min 5, to accommodate BUS
+     */
+    public static HashMap<Integer, ParkingSpot> process(
+        int totalLevels,
+        int totalRows,
+        int totalSpots
+    ) {
         HashMap<Integer, ParkingSpot> LotStructureMap = new HashMap<Integer, ParkingSpot>();
 
-        for (int level = 1; level <= 3; level++) {
+        for (int level = 1; level <= totalLevels; level++) {
 
-            for (int row = 1; row <= 3; row++) {
+            for (int row = 1; row <= totalRows; row++) {
 
                 Size size = getSizeByRow(row);
 
-                for (int spotNumber = 1; spotNumber <= 5; spotNumber++) {
+                for (int spotNumber = 1; spotNumber <= totalSpots; spotNumber++) {
 
                     ParkingSpot spot = new ParkingSpot();
                     spot.SpotID = getSpotID(level, row, spotNumber);

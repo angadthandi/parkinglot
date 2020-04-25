@@ -1,23 +1,32 @@
 package client;
 
-import modules.parkinglot.ParkingLot;
-import modules.parkingmanager.ParkingManager;
-import modules.vehicle.IVehicle;
-import modules.vehicle.motorcycle.Motorcycle;
-import modules.size.Size;
-
 public class ClientBootstrap {
 
     public static void Run() {
-        ParkingLot lot = ParkingLot.getInstance();
-        ParkingManager manager = new ParkingManager(lot);
+        int totalTests = 0;
+        int totalPassed = 0;
+        int totalFailed = 0;
 
-        IVehicle motorcycle = new Motorcycle();
-        Size[] motorcycleSizes = motorcycle.getSize();
-        if (motorcycleSizes.length > 0) {
-            int spotID = manager.park(motorcycleSizes[0]);
-            System.out.println(spotID);
+        if (TestMotorcycle.TestParkThreeMotorcyclesAndNotFourth()) {
+            totalTests += 1;
+            totalPassed += 1;
+        } else {
+            totalTests += 1;
+            totalFailed += 1;
         }
+
+        if (TestMotorcycle.TestParkNoneMotorcycles()) {
+            totalTests += 1;
+            totalPassed += 1;
+        } else {
+            totalTests += 1;
+            totalFailed += 1;
+        }
+
+        System.out.printf(
+            "\nTOTAL TESTS : %d; TOTAL PASSED : %d; TOTAL FAILED : %d",
+            totalTests, totalPassed, totalFailed
+        );
     }
 
 }
