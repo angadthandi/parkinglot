@@ -7,29 +7,15 @@ public class ClientBootstrap {
         int totalPassed = 0;
         int totalFailed = 0;
 
-        if (TestMotorcycle.TestParkThreeMotorcyclesAndNotFourth()) {
-            totalTests += 1;
-            totalPassed += 1;
-        } else {
-            totalTests += 1;
-            totalFailed += 1;
-        }
+        TestMetric motorcycle = TestMotorcycle.Run();
+        totalTests += motorcycle.Total;
+        totalPassed += motorcycle.Pass;
+        totalFailed += motorcycle.Fail;
 
-        if (TestMotorcycle.TestParkNoneMotorcycles()) {
-            totalTests += 1;
-            totalPassed += 1;
-        } else {
-            totalTests += 1;
-            totalFailed += 1;
-        }
-
-        if (TestMotorcycle.Test_Park_NotAbleToParkSecond_Unpark_ParkSecond()) {
-            totalTests += 1;
-            totalPassed += 1;
-        } else {
-            totalTests += 1;
-            totalFailed += 1;
-        }
+        TestMetric car = TestCar.Run();
+        totalTests += car.Total;
+        totalPassed += car.Pass;
+        totalFailed += car.Fail;
 
         System.out.printf(
             "\nTOTAL TESTS : %d; TOTAL PASSED : %d; TOTAL FAILED : %d",

@@ -9,6 +9,43 @@ import modules.size.Size;
 
 public class TestMotorcycle {
 
+    public static TestMetric Run() {
+        int totalTests = 0;
+        int totalPassed = 0;
+        int totalFailed = 0;
+
+        if (TestParkThreeMotorcyclesAndNotFourth()) {
+            totalTests += 1;
+            totalPassed += 1;
+        } else {
+            totalTests += 1;
+            totalFailed += 1;
+        }
+
+        if (TestParkNoneMotorcycles()) {
+            totalTests += 1;
+            totalPassed += 1;
+        } else {
+            totalTests += 1;
+            totalFailed += 1;
+        }
+
+        if (Test_Park_NotAbleToParkSecond_Unpark_ParkSecond()) {
+            totalTests += 1;
+            totalPassed += 1;
+        } else {
+            totalTests += 1;
+            totalFailed += 1;
+        }
+
+        TestMetric t = new TestMetric();
+        t.Total = totalTests;
+        t.Pass = totalPassed;
+        t.Fail = totalFailed;
+
+        return t;
+    }
+
     public static boolean TestParkThreeMotorcyclesAndNotFourth() {
         boolean pass = false;
 
