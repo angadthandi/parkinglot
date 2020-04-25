@@ -14,6 +14,40 @@ public class ParkingLot implements IParkingLot {
 
     public HashMap<Integer, ParkingSpot> LotStructureMap = new HashMap<Integer, ParkingSpot>();
 
+    // DEBUG METHODS FOR TESTING ----------------------------------------------------------
+    /**
+     * WARNING: BREAKS SINGLETON DESIGN PATTERN
+     * ONLY DONE FOR RUNNING MULTIPLE TEST CASES AT ONCE
+     */
+    public void debugClearSingletonInstanceForTesting() {
+        instance = null;
+    }
+
+    public void debugLotStructureMap() {
+
+        for (HashMap.Entry mapElement : LotStructureMap.entrySet()) {
+            ParkingSpot p = (ParkingSpot)mapElement.getValue();
+
+            System.out.printf(
+                "\n SpotID: %d; " +
+                "IsAvailable: %s; " +
+                "Level: %d; " +
+                "RowNumber: %d; " +
+                "SpotNumber: %d; " +
+                "SpotType: %s; ",
+
+                p.SpotID,
+                p.IsAvailable,
+                p.Level ,
+                p.RowNumber,
+                p.SpotNumber,
+                p.SpotType
+            );
+        }
+
+    }
+    // /DEBUG METHODS FOR TESTING ----------------------------------------------------------
+
     private ParkingLot(
         int totalLevels,
         int totalRows,

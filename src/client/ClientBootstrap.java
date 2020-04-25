@@ -23,6 +23,14 @@ public class ClientBootstrap {
             totalFailed += 1;
         }
 
+        if (TestMotorcycle.Test_Park_NotAbleToParkSecond_Unpark_ParkSecond()) {
+            totalTests += 1;
+            totalPassed += 1;
+        } else {
+            totalTests += 1;
+            totalFailed += 1;
+        }
+
         System.out.printf(
             "\nTOTAL TESTS : %d; TOTAL PASSED : %d; TOTAL FAILED : %d",
             totalTests, totalPassed, totalFailed

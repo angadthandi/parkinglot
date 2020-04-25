@@ -82,6 +82,9 @@ public class TestMotorcycle {
         }
         // /VERIFY ------------------------------------
 
+        // CLEANUP
+        lot.debugClearSingletonInstanceForTesting();
+
         return pass;
     }
 
@@ -152,7 +155,112 @@ public class TestMotorcycle {
         }
         // /VERIFY ------------------------------------
 
+        // CLEANUP
+        lot.debugClearSingletonInstanceForTesting();
+
         return pass;
     }
 
+    public static boolean Test_Park_NotAbleToParkSecond_Unpark_ParkSecond() {
+        boolean pass = false;
+
+        // SETUP ------------------------------------
+        int totalLevels = 1;
+        int totalRows = 3;
+        int totalSpots = 1;
+
+        ParkingLot lot = ParkingLot.getInstance(
+            totalLevels,
+            totalRows,
+            totalSpots
+        );
+        ParkingManager manager = new ParkingManager(lot);
+        // /SETUP ------------------------------------
+
+        // RUN & VERIFY ------------------------------------
+
+        // 1. Park Motorocycle 1
+        int spotID1 = 0;
+        IVehicle motorcycle1 = new Motorcycle();
+        Size[] motorcycleSizes1 = motorcycle1.getSize();
+        if (motorcycleSizes1.length > 0) {
+            spotID1 = manager.park(motorcycleSizes1[0]);
+        }
+        // VERIFY ------------------------------------
+        if (spotID1 == -1) {
+            System.out.printf(
+                "\nTest_Park_NotAbleToParkSecond_Unpark_ParkSecond(): " +
+                "FAIL : spotID1 = %d;",
+                spotID1
+            );
+
+            // CLEANUP
+            lot.debugClearSingletonInstanceForTesting();
+            return pass;
+        }
+
+        // 2. FAIL to Park Motorocycle 2
+        int spotID2 = 0;
+        IVehicle motorcycle2 = new Motorcycle();
+        Size[] motorcycleSizes2 = motorcycle2.getSize();
+        if (motorcycleSizes2.length > 0) {
+            spotID2 = manager.park(motorcycleSizes2[0]);
+        }
+        // VERIFY ------------------------------------
+        if (spotID2 != -1) {
+            System.out.printf(
+                "\nTest_Park_NotAbleToParkSecond_Unpark_ParkSecond(): " +
+                "FAIL : spotID2 = %d;",
+                spotID2
+            );
+
+            // CLEANUP
+            lot.debugClearSingletonInstanceForTesting();
+            return pass;
+        }
+
+        // 3. Unpark Motorocycle 1
+        if (!manager.unpark(spotID1)) {
+            System.out.printf(
+                "\nTest_Park_NotAbleToParkSecond_Unpark_ParkSecond(): " +
+                "FAIL : Unable to unpark spotID1: %d",
+                spotID1
+            );
+
+            // CLEANUP
+            lot.debugClearSingletonInstanceForTesting();
+            return pass;
+        }
+
+        // 1. Try Parking Motorocycle 2 Again!!
+        spotID2 = manager.park(motorcycleSizes2[0]);
+        // VERIFY ------------------------------------
+        if (spotID2 == -1) {
+            System.out.printf(
+                "\nTest_Park_NotAbleToParkSecond_Unpark_ParkSecond(): " +
+                "FAIL : spotID2 = %d;",
+                spotID2
+            );
+
+            // CLEANUP
+            lot.debugClearSingletonInstanceForTesting();
+            return pass;
+        } else {
+            System.out.printf(
+                "\nTest_Park_NotAbleToParkSecond_Unpark_ParkSecond(): " +
+                "PASS : spotID2 = %d;",
+                spotID2
+            );
+
+            // If we are here, we passed all cases, set pass to TRUE
+            pass = true;
+        }
+
+        // /RUN & VERIFY ------------------------------------
+
+        // CLEANUP
+        lot.debugClearSingletonInstanceForTesting();
+
+        return pass;
+    }
 }
