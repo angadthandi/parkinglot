@@ -6,7 +6,7 @@ import modules.vehicle.IVehicle;
 public class Bus implements IVehicle {
 
     private String licensePlate;
-    private int spotsNeeded = 5;
+    private int spotsNeeded = 1;
 
     public Size[] getSize() {
         return new Size[]{Size.LARGE};

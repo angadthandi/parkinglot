@@ -15,6 +15,10 @@ public class ParkingManager implements IParkingManager {
         parkingLot = i;
     }
 
+    // Can change/extend park()
+    // to take "IVehicle" as a param instead of "Size",
+    // so that a vehicle which needs more than 1 spot to park
+    // can be handled separately & returns ArrayList of SpotIDs.
     public int park(Size size) {
         ArrayList<ParkingSpot> spots = parkingLot.getSpotsBySize(size);
         int totalSpots = spots.size();

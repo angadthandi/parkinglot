@@ -17,6 +17,11 @@ public class ClientBootstrap {
         totalPassed += car.Pass;
         totalFailed += car.Fail;
 
+        TestMetric bus = TestBus.Run();
+        totalTests += bus.Total;
+        totalPassed += bus.Pass;
+        totalFailed += bus.Fail;
+
         System.out.printf(
             "\nTOTAL TESTS : %d; TOTAL PASSED : %d; TOTAL FAILED : %d",
             totalTests, totalPassed, totalFailed
